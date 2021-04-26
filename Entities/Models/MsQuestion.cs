@@ -7,15 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace WebApi.Entities
+namespace WebApi.Entities.Models
 {
-    public partial class QuestionGroup
+    public partial class MsQuestion
     {
         [Key]
-        public Guid Id { get; set; }
-        public Guid IdGroup { get; set; }
         public Guid IdQuestion { get; set; }
-        public int OrderNo { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime CreateDate { get; set; }
         [Required]
