@@ -19,85 +19,39 @@ namespace WebApi.Entities.DdContextTcrb
         {
         }
 
-        public virtual DbSet<CELRATE> CELRATE { get; set; }
-        public virtual DbSet<LNPAR2> LNPAR2 { get; set; }
-        public virtual DbSet<LateCharge> LateCharge { get; set; }
-        public virtual DbSet<LateCharge_Log> LateCharge_Log { get; set; }
-        public virtual DbSet<Parameter> Parameter { get; set; }
-        public virtual DbSet<SSRATE> SSRATE { get; set; }
+        public virtual DbSet<MsGroup> MsGroup { get; set; }
+        public virtual DbSet<MsQuestion> MsQuestion { get; set; }
+        public virtual DbSet<QuestionGroup> QuestionGroup { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Thai_CI_AS");
 
-            modelBuilder.Entity<CELRATE>(entity =>
+            modelBuilder.Entity<MsGroup>(entity =>
             {
-                entity.Property(e => e.PTYPE).IsUnicode(false);
+                entity.Property(e => e.IdGroup).HasDefaultValueSql("(newid())");
 
-                entity.Property(e => e.PGRDSC).IsUnicode(false);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.PTYDSC).IsUnicode(false);
+                entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             });
 
-            modelBuilder.Entity<LNPAR2>(entity =>
+            modelBuilder.Entity<MsQuestion>(entity =>
             {
-                entity.Property(e => e.PTYPE).IsUnicode(false);
+                entity.Property(e => e.IdQuestion).HasDefaultValueSql("(newid())");
 
-                entity.Property(e => e.PGRDSC).IsUnicode(false);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.PTYDSC).IsUnicode(false);
+                entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             });
 
-            modelBuilder.Entity<LateCharge>(entity =>
-            {
-                entity.Property(e => e.LID).HasDefaultValueSql("(newid())");
-
-                entity.Property(e => e.ApplicationNo).IsUnicode(false);
-
-                entity.Property(e => e.CreateBy).IsUnicode(false);
-
-                entity.Property(e => e.UpdateBy).IsUnicode(false);
-            });
-
-            modelBuilder.Entity<LateCharge_Log>(entity =>
-            {
-                entity.Property(e => e.LogID).HasDefaultValueSql("(newid())");
-
-                entity.Property(e => e.ApplicationNo).IsUnicode(false);
-
-                entity.Property(e => e.CreateBy).IsUnicode(false);
-
-                entity.Property(e => e.EventType).IsUnicode(false);
-
-                entity.Property(e => e.UpdateBy).IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Parameter>(entity =>
+            modelBuilder.Entity<QuestionGroup>(entity =>
             {
                 entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
-                entity.Property(e => e.CreateBy).IsUnicode(false);
+                entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Name).IsUnicode(false);
-
-                entity.Property(e => e.Value).IsUnicode(false);
-            });
-
-            modelBuilder.Entity<SSRATE>(entity =>
-            {
-                entity.Property(e => e.JRDESC).IsUnicode(false);
-
-                entity.Property(e => e.JRRCUR).IsUnicode(false);
-
-                entity.Property(e => e.JRRFRC).IsUnicode(false);
-
-                entity.Property(e => e.JRRNAM).IsUnicode(false);
-
-                entity.Property(e => e.JRSTAT).IsUnicode(false);
-
-                entity.Property(e => e.JRUSID).IsUnicode(false);
-
-                entity.Property(e => e.JRWSID).IsUnicode(false);
+                entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -9,17 +9,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Entities
 {
-    public partial class Parameter
+    public partial class MsQuestion
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid IdQuestion { get; set; }
+        [Required]
         [StringLength(50)]
         public string Name { get; set; }
-        [StringLength(50)]
-        public string Value { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? CreateDate { get; set; }
-        [StringLength(10)]
+        public DateTime CreateDate { get; set; }
+        [Required]
+        [StringLength(50)]
         public string CreateBy { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? UpdateDate { get; set; }
+        [StringLength(50)]
+        public string UpdateBy { get; set; }
+        [Required]
+        public bool? IsActive { get; set; }
     }
 }

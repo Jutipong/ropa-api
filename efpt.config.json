@@ -8,37 +8,26 @@
    "ModelNamespace": null,
    "OutputContextPath": "Entities\/DdContextTcrb",
    "OutputPath": "Entities",
+   "ProceduresReturnList": false,
    "ProjectRootNamespace": "WebApi",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
-         "Name": "[dbo].[CELRATE]",
+         "Name": "[dbo].[MsGroup]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[LateCharge]",
+         "Name": "[dbo].[MsQuestion]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[LateCharge_Log]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[LNPAR2]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Parameter]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[SSRATE]",
+         "Name": "[dbo].[QuestionGroup]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "TC001SQLS1U.LateCharge",
+   "UiHint": "DESKTOP-TTFGOQA.Ropa",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
