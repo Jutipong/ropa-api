@@ -8,7 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Entities.DdContextTcrb
 {
-    public class DdContextTcrb : LatechargeContext
+    public class DdContextTcrb : TcrbContext
     {
         private readonly AppSittingModel _configuration;
 
@@ -17,7 +17,7 @@ namespace WebApi.Entities.DdContextTcrb
             _configuration = configuration.Value;
         }
 
-        public DdContextTcrb(DbContextOptions<LatechargeContext> options)
+        public DdContextTcrb(DbContextOptions<TcrbContext> options)
             : base(options)
         {
         }

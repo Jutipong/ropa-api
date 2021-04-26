@@ -6,9 +6,18 @@
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Services\FlowRateCharge\**" />
+    <Content Remove="Services\FlowRateCharge\**" />
+    <EmbeddedResource Remove="Services\FlowRateCharge\**" />
+    <None Remove="Services\FlowRateCharge\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\LateChargeController.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.11.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.0" />

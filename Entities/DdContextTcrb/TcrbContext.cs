@@ -8,13 +8,13 @@ using WebApi.Entities;
 
 namespace WebApi.Entities.DdContextTcrb
 {
-    public partial class LatechargeContext : DbContext
+    public partial class TcrbContext : DbContext
     {
-        public LatechargeContext()
+        public TcrbContext()
         {
         }
 
-        public LatechargeContext(DbContextOptions<LatechargeContext> options)
+        public TcrbContext(DbContextOptions<TcrbContext> options)
             : base(options)
         {
         }

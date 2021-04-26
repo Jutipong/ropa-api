@@ -10,7 +10,7 @@ using WebApi.Helpers;
 using WebApi.Models;
 using WebApi.Services;
 using WebApi.Entities.DdContextTcrb;
-using WebApi.Services.FlowRateCharge;
+//using WebApi.Services.FlowRateCharge;
 
 namespace WebApi
 {
@@ -41,7 +41,7 @@ namespace WebApi
             services.AddDbContext<DdContextTcrb>();
             services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 
-            services.AddScoped<ILateChargeService, LateChargeService>();
+            //services.AddScoped<ILateChargeService, LateChargeService>();
 
             services.AddControllers().AddJsonOptions(options =>
             {
