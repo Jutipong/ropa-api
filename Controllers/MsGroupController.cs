@@ -9,11 +9,11 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GroupController : ControllerBase
+    public class MsGroupController : ControllerBase
     {
         private readonly IMsGroupService _groupService;
 
-        public GroupController(IMsGroupService groupService)
+        public MsGroupController(IMsGroupService groupService)
         {
             _groupService = groupService;
         }
