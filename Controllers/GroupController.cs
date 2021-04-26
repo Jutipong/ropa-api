@@ -21,7 +21,7 @@ namespace WebApi.Controllers
             _groupService = groupService;
         }
 
-        [HttpPost]
+        [HttpPost("Inquiry")]
         public ResponseModels<MsGroup> Inquiry(List<MsGroup> msGroups)
         {
             var result = new ResponseModels<MsGroup>();
@@ -40,7 +40,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public ResponseModels<MsGroup> Create(List<MsGroup> msGroups)
         {
             var result = new ResponseModels<MsGroup>();
@@ -59,7 +59,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Update")]
         public ResponseModel Update(List<MsGroup> msGroups)
         {
             var result = new ResponseModel();
@@ -78,7 +78,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Delete")]
         public ResponseModel Delete(List<MsGroup> msGroups)
         {
             var result = new ResponseModel();
