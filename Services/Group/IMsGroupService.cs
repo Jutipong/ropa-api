@@ -3,7 +3,7 @@ using WebApi.Models;
 
 namespace WebApi.Services.Group
 {
-    public interface IGroupService
+    public interface IMsGroupService
     {
         public ResponseModels<Entities.Models.MsGroup> Inquiry(List<Entities.Models.MsGroup> msGroups);
         public ResponseModels<Entities.Models.MsGroup> Create(List<Entities.Models.MsGroup> msGroups);

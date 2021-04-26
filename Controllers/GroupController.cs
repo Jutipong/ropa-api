@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApi.Entities.Models;
 using WebApi.Models;
 using WebApi.Services.Group;
@@ -14,9 +11,9 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class GroupController : ControllerBase
     {
-        private readonly IGroupService _groupService;
+        private readonly IMsGroupService _groupService;
 
-        public GroupController(IGroupService groupService)
+        public GroupController(IMsGroupService groupService)
         {
             _groupService = groupService;
         }

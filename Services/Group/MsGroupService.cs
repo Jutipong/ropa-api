@@ -11,12 +11,12 @@ using WebApi.Models;
 
 namespace WebApi.Services.Group
 {
-    public class GroupService : IGroupService
+    public class MsGroupService : IMsGroupService
     {
         private readonly ILogger _logger;
         private readonly DdContextTcrb _context;
 
-        public GroupService(ILogger<MsGroup> logger, DdContextTcrb context)
+        public MsGroupService(ILogger<MsGroup> logger, DdContextTcrb context)
         {
             _logger = logger;
             _context = context;
