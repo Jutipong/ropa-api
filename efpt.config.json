@@ -1,0 +1,55 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "LatechargeContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Entities\/DdContextTcrb",
+   "OutputPath": "Entities",
+   "ProjectRootNamespace": "WebApi",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[CELRATE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LateCharge]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LateCharge_Log]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LNPAR2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Parameter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SSRATE]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "TC001SQLS1U.LateCharge",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSpatial": false
+}
