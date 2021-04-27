@@ -29,7 +29,7 @@ namespace WebApi.Services.Group
                 _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroups)}");
 
                 var nameCondition = msGroups.Select(r => r.Name).ToList();
-                var result = _context.MsGroup.Where(r => nameCondition.Contains(r.Name)).ToList();
+                var result = _context.MsGroup.ToList();//.Where(r => nameCondition.Contains(r.Name)).ToList();
 
                 _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(result)}");
 
