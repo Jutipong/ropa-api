@@ -13,6 +13,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\LateChargeController.cs" />
+    <Compile Remove="Models\LateChargeModel.cs" />
+    <Compile Remove="Models\ValidateLateReqModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />

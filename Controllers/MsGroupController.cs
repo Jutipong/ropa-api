@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using WebApi.Entities.Models;
 using WebApi.Models;
 using WebApi.Services.Group;
+using static WebApi.Models.GroupsModel;
 
 namespace WebApi.Controllers
 {
@@ -19,12 +20,12 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Inquiry")]
-        public ResponseModels<MsGroup> Inquiry(List<MsGroup> msGroups)
+        public ResponseModels<MsGroup> Inquiry(GroupReqModel req)
         {
             var result = new ResponseModels<MsGroup>();
             try
             {
-                result = _groupService.Inquiry(msGroups);
+                result = _groupService.Inquiry(req);
                 return result;
             }
             catch

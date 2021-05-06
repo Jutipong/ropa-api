@@ -8,6 +8,7 @@ using Utf8Json;
 using WebApi.Entities.DdContextTcrb;
 using WebApi.Entities.Models;
 using WebApi.Models;
+using static WebApi.Models.GroupsModel;
 
 namespace WebApi.Services.Group
 {
@@ -21,23 +22,26 @@ namespace WebApi.Services.Group
             _logger = logger;
             _context = context;
         }
-        public ResponseModels<MsGroup> Inquiry(List<MsGroup> msGroups)
+        public ResponseModels<MsGroup> Inquiry(GroupReqModel req)
         {
             var methodName = MethodBase.GetCurrentMethod().Name;
             try
             {
-                _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroups)}");
+                _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(req)}");
 
-                var nameCondition = msGroups.Select(r => r.Name).ToList();
-                var result = _context.MsGroup.ToList();//.Where(r => nameCondition.Contains(r.Name)).ToList();
-
-                _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(result)}");
-
-                return new ResponseModels<MsGroup>
+                //var nameCondition = msGroups.Select(r => r.Name).ToList();
+                var query = _context.MsGroup.Where(r => string.IsNullOrEmpty(req.Filter) || r.Name.Contains(req.Filter));
+                var datas = query.Skip((req.Page - 1) * req.RowsPerPage).Take(req.RowsPerPage).ToList();
+                var total = query.Count();
+                var result = new ResponseModels<MsGroup>
                 {
                     Success = true,
-                    Datas = result
+                    Datas = datas,
+                    Total = total
                 };
+
+                _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(result)}");
+                return result;
             }
             catch (Exception ex)
             {
