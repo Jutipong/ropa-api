@@ -2,19 +2,19 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using WebApi.Entities;
+using WebApi.Entities.Models;
 
 #nullable disable
 
 namespace WebApi.Entities.DdContextTcrb
 {
-    public partial class LatechargeContext : DbContext
+    public partial class TcrbContext : DbContext
     {
-        public LatechargeContext()
+        public TcrbContext()
         {
         }
 
-        public LatechargeContext(DbContextOptions<LatechargeContext> options)
+        public TcrbContext(DbContextOptions<TcrbContext> options)
             : base(options)
         {
         }
@@ -22,6 +22,14 @@ namespace WebApi.Entities.DdContextTcrb
         public virtual DbSet<MsGroup> MsGroup { get; set; }
         public virtual DbSet<MsQuestion> MsQuestion { get; set; }
         public virtual DbSet<QuestionGroup> QuestionGroup { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-TTFGOQA;Initial Catalog=Ropa;Integrated Security=True");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

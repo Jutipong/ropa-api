@@ -14,7 +14,7 @@ namespace WebApi.Models
         public string ID { get; set; }
         [JsonIgnore]
         public string Code { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public int Total { get; set; } = 0;
 
         private bool _Success = false;

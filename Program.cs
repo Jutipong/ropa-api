@@ -34,7 +34,7 @@ namespace WebApi
         public static IWebHostBuilder CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
-            .UseUrls("http://0.0.0.0:8044")
+            //.UseUrls("http://0.0.0.0:8044")
             .ConfigureKestrel((context, options) =>
             {
                 options.AddServerHeader = false;

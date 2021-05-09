@@ -8,7 +8,7 @@ namespace WebApi
     {
         public MappingProfile()
         {
-            CreateMap<LateCharge, LateCharge_Log>();
+            //CreateMap<LateCharge, LateCharge_Log>();
         }
     }
 }
