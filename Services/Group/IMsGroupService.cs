@@ -7,8 +7,8 @@ namespace WebApi.Services.Group
     public interface IMsGroupService
     {
         public ResponseModels<Entities.Models.MsGroup> Inquiry(GroupReqModel req);
-        public ResponseModels<Entities.Models.MsGroup> Create(List<Entities.Models.MsGroup> msGroups);
-        public ResponseModel Update(List<Entities.Models.MsGroup> msGroups);
-        public ResponseModel Delete(List<Entities.Models.MsGroup> msGroups);
+        public ResponseModel<Entities.Models.MsGroup> Create(Entities.Models.MsGroupDto msGroup);
+        public ResponseModel Update(Entities.Models.MsGroup msGroups);
+        public ResponseModel Delete(Entities.Models.MsGroup msGroups);
     }
 }

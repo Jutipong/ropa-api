@@ -39,17 +39,17 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Create")]
-        public ResponseModels<MsGroup> Create(List<MsGroup> msGroups)
+        public ResponseModel<MsGroup> Create(MsGroupDto msGroup)
         {
-            var result = new ResponseModels<MsGroup>();
+            var result = new ResponseModel<MsGroup>();
             try
             {
-                result = _groupService.Create(msGroups);
+                result = _groupService.Create(msGroup);
                 return result;
             }
             catch
             {
-                return new ResponseModels<MsGroup>
+                return new ResponseModel<MsGroup>
                 {
                     Message = result.Message,
                     StatusCode = StatusCodes.Status500InternalServerError
@@ -58,7 +58,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Update")]
-        public ResponseModel Update(List<MsGroup> msGroups)
+        public ResponseModel Update(MsGroup msGroups)
         {
             var result = new ResponseModel();
             try
@@ -77,7 +77,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Delete")]
-        public ResponseModel Delete(List<MsGroup> msGroups)
+        public ResponseModel Delete(MsGroup msGroups)
         {
             var result = new ResponseModel();
             try

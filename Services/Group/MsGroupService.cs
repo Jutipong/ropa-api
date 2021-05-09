@@ -29,9 +29,8 @@ namespace WebApi.Services.Group
             {
                 _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(req)}");
 
-                //var nameCondition = msGroups.Select(r => r.Name).ToList();
                 var query = _context.MsGroup.Where(r => string.IsNullOrEmpty(req.Filter) || r.Name.Contains(req.Filter));
-                var datas = query.Skip((req.Page - 1) * req.RowsPerPage).Take(req.RowsPerPage).ToList();
+                var datas = query.OrderByDescending(r => r.CreateDate).Skip((req.Page - 1) * req.RowsPerPage).Take(req.RowsPerPage).ToList();
                 var total = query.Count();
                 var result = new ResponseModels<MsGroup>
                 {
@@ -51,22 +50,29 @@ namespace WebApi.Services.Group
             }
         }
 
-        public ResponseModels<MsGroup> Create(List<MsGroup> msGroups)
+        public ResponseModel<MsGroup> Create(MsGroupDto msGroup)
         {
             var methodName = MethodBase.GetCurrentMethod().Name;
             try
             {
-                _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroups)}");
+                _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroup)}");
 
-                _context.MsGroup.AddRange(msGroups);
+                var _group = new MsGroup
+                {
+                    IdGroup = Guid.NewGuid(),
+                    Name = msGroup.Name,
+                    CreateBy = "System",
+                    CreateDate = DateTime.Now
+                };
+                _context.MsGroup.Add(_group);
                 _context.SaveChanges();
 
-                _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(msGroups)}");
+                _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(_group)}");
 
-                return new ResponseModels<MsGroup>
+                return new ResponseModel<MsGroup>
                 {
                     Success = true,
-                    Datas = msGroups
+                    Datas = _group,
                 };
             }
             catch (Exception ex)
@@ -77,14 +83,14 @@ namespace WebApi.Services.Group
             }
         }
 
-        public ResponseModel Update(List<MsGroup> msGroups)
+        public ResponseModel Update(MsGroup msGroups)
         {
             var methodName = MethodBase.GetCurrentMethod().Name;
             try
             {
                 _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroups)}");
 
-                _context.MsGroup.UpdateRange(msGroups);
+                _context.MsGroup.Update(msGroups);
                 _context.SaveChanges();
 
                 _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(msGroups)}");
@@ -101,14 +107,14 @@ namespace WebApi.Services.Group
                 throw new ArgumentException(messageError, ex);
             }
         }
-        public ResponseModel Delete(List<MsGroup> msGroups)
+        public ResponseModel Delete(MsGroup msGroups)
         {
             var methodName = MethodBase.GetCurrentMethod().Name;
             try
             {
                 _logger.LogInformation($"Start Function => {methodName}, Parameters => {JsonSerializer.ToJsonString(msGroups)}");
 
-                _context.MsGroup.RemoveRange(msGroups);
+                _context.MsGroup.Remove(msGroups);
                 _context.SaveChanges();
 
                 _logger.LogInformation($"Finish Function => {methodName}, Result => {JsonSerializer.ToJsonString(msGroups)}");
