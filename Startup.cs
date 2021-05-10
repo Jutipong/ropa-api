@@ -11,6 +11,7 @@ using WebApi.Models;
 using WebApi.Services;
 using WebApi.Entities.DdContextTcrb;
 using WebApi.Services.Group;
+using WebApi.Services.MsQuestion;
 
 namespace WebApi
 {
@@ -42,6 +43,7 @@ namespace WebApi
             services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 
             services.AddScoped<IMsGroupService, MsGroupService>();
+            services.AddScoped<IMsQuestionService, MsQuestionService>();
 
             services.AddControllers().AddJsonOptions(options =>
             {

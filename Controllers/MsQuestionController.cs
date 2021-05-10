@@ -1,35 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using WebApi.Entities.Models;
 using WebApi.Models;
-using WebApi.Services.Group;
-using static WebApi.Models.GroupsModel;
+using WebApi.Services.MsQuestion;
 
-namespace WebApi.Controllers
+namespace ropa_api.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class MsGroupController : ControllerBase
+    public class MsQuestionController : ControllerBase
     {
-        private readonly IMsGroupService _msGroupService;
-        public MsGroupController(IMsGroupService groupService)
+        private readonly IMsQuestionService _msQuestionService;
+        public MsQuestionController(IMsQuestionService msQuestionService)
         {
-            _msGroupService = groupService;
+            _msQuestionService = msQuestionService;
         }
 
         [HttpPost("Inquiry")]
-        public ResponseModels<MsGroup> Inquiry(GroupReqModel req)
+        public ResponseModels<MsQuestion> Inquiry(MsQuestionReqModel req)
         {
-            var result = new ResponseModels<MsGroup>();
+            var result = new ResponseModels<MsQuestion>();
             try
             {
-                result = _msGroupService.Inquiry(req);
+                result = _msQuestionService.Inquiry(req);
                 return result;
             }
             catch
             {
-                return new ResponseModels<MsGroup>
+                return new ResponseModels<MsQuestion>
                 {
                     Message = result.Message,
                     StatusCode = StatusCodes.Status500InternalServerError
@@ -38,17 +34,17 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Create")]
-        public ResponseModel<MsGroup> Create(MsGroupDto msGroup)
+        public ResponseModel Create(MsQuestionDto msQuestionDto)
         {
-            var result = new ResponseModel<MsGroup>();
+            var result = new ResponseModel();
             try
             {
-                result = _msGroupService.Create(msGroup);
+                result = _msQuestionService.Create(msQuestionDto);
                 return result;
             }
             catch
             {
-                return new ResponseModel<MsGroup>
+                return new ResponseModel
                 {
                     Message = result.Message,
                     StatusCode = StatusCodes.Status500InternalServerError
@@ -57,12 +53,12 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Update")]
-        public ResponseModel Update(MsGroup msGroups)
+        public ResponseModel Update(MsQuestion msQuestion)
         {
             var result = new ResponseModel();
             try
             {
-                result = _msGroupService.Update(msGroups);
+                result = _msQuestionService.Update(msQuestion);
                 return result;
             }
             catch
@@ -76,12 +72,12 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Delete")]
-        public ResponseModel Delete(MsGroup msGroups)
+        public ResponseModel Delete(MsQuestion msQuestion)
         {
             var result = new ResponseModel();
             try
             {
-                result = _msGroupService.Delete(msGroups);
+                result = _msQuestionService.Delete(msQuestion);
                 return result;
             }
             catch
