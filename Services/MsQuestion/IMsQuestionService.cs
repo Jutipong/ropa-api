@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Models;
+using static WebApi.Models.GroupsModel;
 
 namespace WebApi.Services.MsQuestion
 {
     public interface IMsQuestionService
     {
-        public ResponseModels<Entities.Models.MsGroup> Inquiry(GroupReqModel req);
-        public ResponseModels<Entities.Models.MsGroup> Create(List<Entities.Models.MsGroup> msGroups);
-        public ResponseModel Update(List<Entities.Models.MsGroup> msGroups);
-        public ResponseModel Delete(List<Entities.Models.MsGroup> msGroups);
+        public ResponseModels<Entities.Models.MsQuestion> Inquiry(MsQuestionReqModel req);
+        public ResponseModel Create(Entities.Models.MsQuestionDto msQuestionDto);
+        public ResponseModel Update(Entities.Models.MsQuestion msQuestion);
+        public ResponseModel Delete(Entities.Models.MsQuestion msQuestion);
     }
 }
