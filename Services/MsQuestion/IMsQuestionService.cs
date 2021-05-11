@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebApi.Models;
-using static WebApi.Models.GroupsModel;
+﻿using WebApi.Models;
 
 namespace WebApi.Services.MsQuestion
 {
@@ -13,5 +8,6 @@ namespace WebApi.Services.MsQuestion
         public ResponseModel Create(Entities.Models.MsQuestionDto msQuestionDto);
         public ResponseModel Update(Entities.Models.MsQuestion msQuestion);
         public ResponseModel Delete(Entities.Models.MsQuestion msQuestion);
+        public ResponseModel GetAll();
     }
 }

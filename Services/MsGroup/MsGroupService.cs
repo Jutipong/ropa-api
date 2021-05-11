@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Utf8Json;
 using WebApi.Entities.DdContextTcrb;
 using WebApi.Entities.Models;
@@ -122,6 +120,37 @@ namespace WebApi.Services.Group
                 return new ResponseModels<MsGroup>
                 {
                     Success = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                var messageError = $"Error Function => {methodName}";
+                _logger.LogError(ex, messageError);
+                throw new ArgumentException(messageError, ex);
+            }
+        }
+
+        public ResponseModel GetAll()
+        {
+            var methodName = MethodBase.GetCurrentMethod().Name;
+            try
+            {
+                _logger.LogInformation($"Start Function => {methodName}");
+
+                var datas = _context.MsGroup
+                .Where(r => r.IsActive == true)
+                .Select(r => new
+                {
+                    value = r.IdGroup.ToString(),
+                    label = r.Name,
+                }).ToList();
+
+                _logger.LogInformation($"Finish Function => {methodName}");
+
+                return new ResponseModel
+                {
+                    Success = true,
+                    Datas = datas
                 };
             }
             catch (Exception ex)

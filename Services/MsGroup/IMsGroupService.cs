@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WebApi.Models;
+﻿using WebApi.Models;
 using static WebApi.Models.GroupsModel;
 
 namespace WebApi.Services.Group
@@ -10,5 +9,6 @@ namespace WebApi.Services.Group
         public ResponseModel<Entities.Models.MsGroup> Create(Entities.Models.MsGroupDto msGroup);
         public ResponseModel Update(Entities.Models.MsGroup msGroups);
         public ResponseModel Delete(Entities.Models.MsGroup msGroups);
+        public ResponseModel GetAll();
     }
 }
