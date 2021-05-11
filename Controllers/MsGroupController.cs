@@ -93,5 +93,24 @@ namespace WebApi.Controllers
                 };
             }
         }
+
+        [HttpPost("GetAll")]
+        public ResponseModel GetAll(MsQuestion msQuestion)
+        {
+            var result = new ResponseModel();
+            try
+            {
+                result = _msGroupService.GetAll();
+                return result;
+            }
+            catch
+            {
+                return new ResponseModel
+                {
+                    Message = result.Message,
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+        }
     }
 }
