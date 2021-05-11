@@ -6,6 +6,8 @@ using WebApi.Services.MsQuestion;
 
 namespace ropa_api.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class MsQuestionController : ControllerBase
     {
         private readonly IMsQuestionService _msQuestionService;
