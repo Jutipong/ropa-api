@@ -93,7 +93,7 @@ namespace ropa_api.Controllers
         }
 
         [HttpPost("GetAll")]
-        public ResponseModel GetAll(MsQuestion msQuestion)
+        public ResponseModel GetAll()
         {
             var result = new ResponseModel();
             try

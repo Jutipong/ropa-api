@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
@@ -140,8 +141,8 @@ namespace WebApi.Services.MsQuestion
                 .Where(r => r.IsActive == true)
                 .Select(r => new
                 {
-                    value = r.IdQuestion.ToString(),
-                    label = r.Name,
+                    IdQuestion = r.IdQuestion.ToString(),
+                    Name = r.Name,
                 }).ToList();
 
                 _logger.LogInformation($"Finish Function => {methodName}");
