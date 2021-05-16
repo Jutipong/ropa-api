@@ -19,21 +19,30 @@ namespace WebApi.Entities.DdContextTcrb
         {
         }
 
+        public virtual DbSet<ConfigGroupQuestion> ConfigGroupQuestion { get; set; }
         public virtual DbSet<MsGroup> MsGroup { get; set; }
         public virtual DbSet<MsQuestion> MsQuestion { get; set; }
         public virtual DbSet<QuestionGroup> QuestionGroup { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-TTFGOQA;Initial Catalog=Ropa;Integrated Security=True");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Thai_CI_AS");
+
+            modelBuilder.Entity<ConfigGroupQuestion>(entity =>
+            {
+                entity.HasKey(e => e.IdConfigGroupQuestion)
+                    .HasName("PK_Config_Group_Question");
+
+                entity.Property(e => e.IdConfigGroupQuestion).HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.CreateBy).IsFixedLength(true);
+
+                entity.Property(e => e.CreateDate).IsFixedLength(true);
+
+                entity.Property(e => e.IdQuestion).HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+            });
 
             modelBuilder.Entity<MsGroup>(entity =>
             {

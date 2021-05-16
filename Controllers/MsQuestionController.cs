@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using WebApi.Entities.Models;
 using WebApi.Models;
 using WebApi.Services.MsQuestion;
@@ -99,6 +100,25 @@ namespace ropa_api.Controllers
             try
             {
                 result = _msQuestionService.GetAll();
+                return result;
+            }
+            catch
+            {
+                return new ResponseModel
+                {
+                    Message = result.Message,
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+        }
+
+        [HttpGet("GetQuestionById")]
+        public ResponseModel GetQuestionById(Guid IdGroup)
+        {
+            var result = new ResponseModel();
+            try
+            {
+                result = _msQuestionService.GetQuestionById(new MsGroup { IdGroup = IdGroup });
                 return result;
             }
             catch

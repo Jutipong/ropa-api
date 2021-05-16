@@ -9,5 +9,6 @@ namespace WebApi.Services.MsQuestion
         public ResponseModel Update(Entities.Models.MsQuestion msQuestion);
         public ResponseModel Delete(Entities.Models.MsQuestion msQuestion);
         public ResponseModel GetAll();
+        public ResponseModel GetQuestionById(Entities.Models.MsGroup msGroup);
     }
 }
