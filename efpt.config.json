@@ -4,7 +4,7 @@
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": true,
+   "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": "Entities\/DdContextTcrb",
    "OutputPath": "Entities\/Models",
@@ -14,6 +14,10 @@
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
+      {
+         "Name": "[dbo].[ConfigGroupQuestion]",
+         "ObjectType": 0
+      },
       {
          "Name": "[dbo].[MsGroup]",
          "ObjectType": 0
