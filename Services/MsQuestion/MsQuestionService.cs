@@ -168,14 +168,14 @@ namespace WebApi.Services.MsQuestion
             {
                 _logger.LogInformation($"Start Function => {methodName}");
 
-                var datas = _context.MsQuestion
-                    //.Where(r => r.IdQuestion == msQuestion.IdQuestion)
-                    .Where(r => r.IsActive == true)
-                    .Select(r => new
-                    {
-                        r.IdQuestion,
-                        r.Name,
-                    }).ToList();
+                var datas = (from config in _context.ConfigGroupQuestion
+                             join question in _context.MsQuestion on config.IdQuestion equals question.IdQuestion
+                             where (question.IsActive == true && config.IdGroup == msGroup.IdGroup)
+                             select new
+                             {
+                                 question.IdQuestion,
+                                 question.Name
+                             }).ToList();
 
                 _logger.LogInformation($"Finish Function => {methodName}");
 
