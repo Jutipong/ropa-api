@@ -15,12 +15,12 @@ namespace WebApi.Entities.Models
         public Guid IdConfigGroupQuestion { get; set; }
         public Guid IdGroup { get; set; }
         public Guid IdQuestion { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime CreateDate { get; set; }
         [Required]
-        [StringLength(10)]
-        public string CreateDate { get; set; }
-        [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string CreateBy { get; set; }
+        public int? Order { get; set; }
         [Required]
         public bool? IsActive { get; set; }
     }

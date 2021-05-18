@@ -141,7 +141,7 @@ namespace WebApi.Services.MsQuestion
                 .Where(r => r.IsActive == true)
                 .Select(r => new
                 {
-                    IdQuestion = r.IdQuestion.ToString(),
+                    IdQuestion = r.IdQuestion,
                     Name = r.Name,
                 }).ToList();
 
@@ -161,36 +161,6 @@ namespace WebApi.Services.MsQuestion
             }
         }
 
-        public ResponseModel GetQuestionById(Entities.Models.MsGroup msGroup)
-        {
-            var methodName = MethodBase.GetCurrentMethod().Name;
-            try
-            {
-                _logger.LogInformation($"Start Function => {methodName}");
 
-                var datas = _context.MsQuestion
-                    //.Where(r => r.IdQuestion == msQuestion.IdQuestion)
-                    .Where(r => r.IsActive == true)
-                    .Select(r => new
-                    {
-                        r.IdQuestion,
-                        r.Name,
-                    }).ToList();
-
-                _logger.LogInformation($"Finish Function => {methodName}");
-
-                return new ResponseModel
-                {
-                    Success = true,
-                    Datas = datas
-                };
-            }
-            catch (Exception ex)
-            {
-                var messageError = $"Error Function => {methodName}";
-                _logger.LogError(ex, messageError);
-                throw new ArgumentException(messageError, ex);
-            }
-        }
     }
 }

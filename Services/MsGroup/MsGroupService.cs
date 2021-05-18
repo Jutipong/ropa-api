@@ -141,9 +141,13 @@ namespace WebApi.Services.Group
                 .Where(r => r.IsActive == true)
                 .Select(r => new
                 {
-                    value = r.IdGroup.ToString(),
+                    value = r.IdGroup,
                     label = r.Name,
                 }).ToList();
+
+
+                var q = _context.MsQuestion.ToList();
+                var c = _context.ConfigGroupQuestion.ToList();
 
                 _logger.LogInformation($"Finish Function => {methodName}");
 

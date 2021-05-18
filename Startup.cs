@@ -12,6 +12,7 @@ using WebApi.Services;
 using WebApi.Entities.DdContextTcrb;
 using WebApi.Services.Group;
 using WebApi.Services.MsQuestion;
+using WebApi.Services.ConfigGroupQuestion;
 
 namespace WebApi
 {
@@ -29,11 +30,13 @@ namespace WebApi
         // add services to the DI container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //services.AddAutoMapper(typeof(Startup));
             services.AddLogging(options => options.AddFilter("Microsoft", LogLevel.None).AddFilter(nameof(System), LogLevel.Warning));
             services.AddCors();
             services.AddControllers();
+
+            services.AddAutoMapper(z => { z.AddProfile(new MappingProfile()); });
 
             // configure strongly typed settings object
             services.Configure<AppSittingModel>(Configuration.GetSection("AppSettings"));
@@ -44,6 +47,7 @@ namespace WebApi
 
             services.AddScoped<IMsGroupService, MsGroupService>();
             services.AddScoped<IMsQuestionService, MsQuestionService>();
+            services.AddScoped<IConfigGroupQuestionService, ConfigGroupQuestionService>();
 
             services.AddControllers().AddJsonOptions(options =>
             {
