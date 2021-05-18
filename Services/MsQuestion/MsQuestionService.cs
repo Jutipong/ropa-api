@@ -161,36 +161,6 @@ namespace WebApi.Services.MsQuestion
             }
         }
 
-        public ResponseModel GetQuestionById(Entities.Models.MsGroup msGroup)
-        {
-            var methodName = MethodBase.GetCurrentMethod().Name;
-            try
-            {
-                _logger.LogInformation($"Start Function => {methodName}");
 
-                var datas = (from config in _context.ConfigGroupQuestion
-                             join question in _context.MsQuestion on config.IdQuestion equals question.IdQuestion
-                             where (question.IsActive == true && config.IdGroup == msGroup.IdGroup)
-                             select new
-                             {
-                                 question.IdQuestion,
-                                 question.Name
-                             }).ToList();
-
-                _logger.LogInformation($"Finish Function => {methodName}");
-
-                return new ResponseModel
-                {
-                    Success = true,
-                    Datas = datas
-                };
-            }
-            catch (Exception ex)
-            {
-                var messageError = $"Error Function => {methodName}";
-                _logger.LogError(ex, messageError);
-                throw new ArgumentException(messageError, ex);
-            }
-        }
     }
 }

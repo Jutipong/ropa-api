@@ -111,24 +111,5 @@ namespace ropa_api.Controllers
                 };
             }
         }
-
-        [HttpGet("GetQuestionById")]
-        public ResponseModel GetQuestionById(Guid IdGroup)
-        {
-            var result = new ResponseModel();
-            try
-            {
-                result = _msQuestionService.GetQuestionById(new MsGroup { IdGroup = IdGroup });
-                return result;
-            }
-            catch
-            {
-                return new ResponseModel
-                {
-                    Message = result.Message,
-                    StatusCode = StatusCodes.Status500InternalServerError
-                };
-            }
-        }
     }
 }
