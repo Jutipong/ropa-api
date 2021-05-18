@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using WebApi.Entities;
+using WebApi.Entities.Models;
 using WebApi.Models;
 
 namespace WebApi
@@ -8,7 +9,7 @@ namespace WebApi
     {
         public MappingProfile()
         {
-            //CreateMap<LateCharge, LateCharge_Log>();
+            CreateMap<ConfigGroupQuestionModel, ConfigGroupQuestion>();
         }
     }
 }

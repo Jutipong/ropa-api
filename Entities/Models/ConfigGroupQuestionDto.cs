@@ -17,8 +17,10 @@ namespace WebApi.Entities.Models
         public Guid IdConfigGroupQuestion { get; set; }
         public Guid IdGroup { get; set; }
         public Guid IdQuestion { get; set; }
-        public string CreateDate { get; set; }
+        public string Name { get; set; }
+        public DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
+        public int? Order { get; set; }
         public bool? IsActive { get; set; }
     }
 

@@ -141,7 +141,7 @@ namespace WebApi.Services.MsQuestion
                 .Where(r => r.IsActive == true)
                 .Select(r => new
                 {
-                    IdQuestion = r.IdQuestion.ToString(),
+                    IdQuestion = r.IdQuestion,
                     Name = r.Name,
                 }).ToList();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace WebApi.Controllers
     public class ConfigGroupQuestionController : Controller
     {
         private readonly IConfigGroupQuestionService _configGroupQuestionService;
+
         public ConfigGroupQuestionController(IConfigGroupQuestionService configGroupQuestionService)
         {
             _configGroupQuestionService = configGroupQuestionService;
@@ -40,12 +42,31 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("Action")]
-        public ResponseModel Action([FromBody]ConfigGroupQuestionDto configGroupQuestionDtos)
+        public ResponseModel Action(ConfigGroupQuestionDto configGroupQuestionDto)
         {
             var result = new ResponseModel();
             try
             {
-                result = _configGroupQuestionService.Action(configGroupQuestionDtos);
+                result = _configGroupQuestionService.Action(configGroupQuestionDto);
+                return result;
+            }
+            catch
+            {
+                return new ResponseModel
+                {
+                    Message = result.Message,
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+        }
+
+        [HttpPost("ActionSort")]
+        public ResponseModel ActionSort(List<ConfigGroupQuestion> configGroupQuestions)
+        {
+            var result = new ResponseModel();
+            try
+            {
+                result = _configGroupQuestionService.ActionSort(configGroupQuestions);
                 return result;
             }
             catch

@@ -35,10 +35,6 @@ namespace WebApi.Entities.DdContextTcrb
 
                 entity.Property(e => e.IdConfigGroupQuestion).HasDefaultValueSql("(newid())");
 
-                entity.Property(e => e.CreateBy).IsFixedLength(true);
-
-                entity.Property(e => e.CreateDate).IsFixedLength(true);
-
                 entity.Property(e => e.IdQuestion).HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
