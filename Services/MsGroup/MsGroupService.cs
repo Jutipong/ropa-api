@@ -145,10 +145,6 @@ namespace WebApi.Services.Group
                     label = r.Name,
                 }).ToList();
 
-
-                var q = _context.MsQuestion.ToList();
-                var c = _context.ConfigGroupQuestion.ToList();
-
                 _logger.LogInformation($"Finish Function => {methodName}");
 
                 return new ResponseModel

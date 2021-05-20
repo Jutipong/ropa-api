@@ -30,11 +30,6 @@ namespace WebApi.Services.ConfigGroupQuestion
             {
                 _logger.LogInformation($"Start Function => {methodName}");
 
-
-                //var q = _context.MsQuestion.ToList();
-                //var c = _context.ConfigGroupQuestion.ToList();
-
-
                 var datas = (from config in _context.ConfigGroupQuestion
                              join question in _context.MsQuestion on config.IdQuestion equals question.IdQuestion
                              where (question.IsActive == true && config.IdGroup == msGroup.IdGroup)
